@@ -1,19 +1,12 @@
 'use strict';
 
-const getContributionsByTopicsSchema = {
-  description: `Get user's contributions grouped by topics`,
+const getContributionsByTypesSchema = {
+  description: `Get user's contributions count by types`,
   tags: ['users'],
   params: {
     type: 'object',
     required: ['id'],
     properties: { id: { type: 'string' } },
-  },
-  querystring: {
-    type: 'object',
-    properties: {
-      sort: { type: 'string', enum: ['desc', 'asc'], default: 'desc' },
-      limit: { type: 'number', minimum: 1, default: 1 },
-    },
   },
   response: {
     200: {
@@ -25,7 +18,7 @@ const getContributionsByTopicsSchema = {
           items: {
             type: 'object',
             properties: {
-              topic: { type: 'string' },
+              type: { type: 'string' },
               contributions: { type: 'number' },
             },
           },
@@ -35,4 +28,4 @@ const getContributionsByTopicsSchema = {
   },
 };
 
-module.exports = getContributionsByTopicsSchema;
+module.exports = getContributionsByTypesSchema;

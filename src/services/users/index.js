@@ -1,13 +1,20 @@
 'use strict';
 
-const getContributionsByTopic = require('./getContributionsByTopics');
+const getContributionsByTopics = require('./getContributionsByTopics');
+const getContributionsByTypes = require('./getContributionsByTypes');
 const schemas = require('../../schemas');
 
 const userService = async (fastify, options) => {
   fastify.get(
     '/:id/contributions/topics',
     { schema: schemas.users.getContributionsByTopics },
-    getContributionsByTopic(fastify)
+    getContributionsByTopics(fastify)
+  );
+
+  fastify.get(
+    '/:id/contributions/types',
+    { schema: schemas.users.getContributionsByTypes },
+    getContributionsByTypes(fastify)
   );
 };
 
