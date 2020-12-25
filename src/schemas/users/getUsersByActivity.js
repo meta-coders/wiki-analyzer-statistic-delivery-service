@@ -14,9 +14,9 @@ const getUsersByActivitySchema = {
   response: {
     200: {
       type: 'object',
-      required: ['contributions'],
+      required: ['users'],
       properties: {
-        contributions: {
+        users: {
           type: 'array',
           items: {
             type: 'object',

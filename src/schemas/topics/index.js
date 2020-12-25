@@ -1,3 +1,5 @@
 'use strict';
 
-module.exports = {};
+const getTopicsByEdits = require('./getTopicsByEdits');
+
+module.exports = { getTopicsByEdits };
