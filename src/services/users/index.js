@@ -2,6 +2,7 @@
 
 const getContributionsByTopics = require('./getContributionsByTopics');
 const getContributionsByTypes = require('./getContributionsByTypes');
+const getUsersByActivity = require('./getUsersByActivity');
 const schemas = require('../../schemas');
 
 const userService = async (fastify, options) => {
@@ -15,6 +16,12 @@ const userService = async (fastify, options) => {
     '/:id/contributions/types',
     { schema: schemas.users.getContributionsByTypes },
     getContributionsByTypes(fastify)
+  );
+
+  fastify.get(
+    '/activity',
+    { schema: schemas.users.getUsersByActivity },
+    getUsersByActivity(fastify)
   );
 };
 
