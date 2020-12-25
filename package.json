@@ -32,6 +32,7 @@
     "fastify-cors": "^5.1.0",
     "fastify-plugin": "^3.0.0",
     "fastify-postgres": "^3.3.0",
+    "fastify-swagger": "^3.5.0",
     "joi": "^17.3.0",
     "pg": "^8.5.1"
   }
