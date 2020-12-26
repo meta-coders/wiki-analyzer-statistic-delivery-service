@@ -4,7 +4,7 @@ CREATE TYPE CONTRIBUTION_TYPE AS ENUM('typo_editting', 'content_addition');
 
 CREATE TABLE users (
   user_id SERIAL PRIMARY KEY,
-  username TEXT NOT NULL
+  username TEXT NOT NULL UNIQUE
 );
 
 CREATE TABLE contributions (
