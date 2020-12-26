@@ -4,9 +4,10 @@
   "description": "Service for wiki statistic delivery",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node server.js",
     "lint": "eslint --ignore-path .gitignore \"**/*.js\"",
-    "fmt": "prettier --ignore-path .gitignore --write \"**/*.js\""
+    "fmt": "prettier --ignore-path .gitignore --write \"**/*.js\"",
+    "test": "jest --runInBand --verbose .tests.js"
   },
   "repository": {
     "type": "git",
@@ -18,11 +19,16 @@
     "url": "https://github.com/meta-coders/wiki-analyzer-statistic-delivery-service/issues"
   },
   "homepage": "https://github.com/meta-coders/wiki-analyzer-statistic-delivery-service#readme",
+  "jest": {
+    "testEnvironment": "node",
+    "globalSetup": "./__tests__/utils/setup.js"
+  },
   "devDependencies": {
     "eslint": "^7.16.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^7.1.0",
     "eslint-plugin-prettier": "^3.3.0",
+    "jest": "^26.6.3",
     "prettier": "^2.2.1"
   },
   "dependencies": {

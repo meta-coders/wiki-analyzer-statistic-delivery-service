@@ -3,7 +3,7 @@
 const path = require('path');
 const dotenv = require('dotenv');
 
-const fastify = require('fastify')({ logger: true });
+const fastify = require('fastify');
 const fastifyCors = require('fastify-cors');
 const fastifyPg = require('fastify-postgres');
 const AutoLoad = require('fastify-autoload');
@@ -11,15 +11,22 @@ const fastifySwagger = require('fastify-swagger');
 
 const swaggerSchema = require('./src/schemas/swagger');
 
-dotenv.config();
+const run = () => {
+  dotenv.config();
+  const { NODE_ENV, DB_URL, TEST_DB_URL } = process.env;
+  const isTestEnv = NODE_ENV === 'test';
+  const app = fastify({ logger: !(isTestEnv) });
 
-fastify.register(fastifyPg);
-fastify.register(fastifyCors, { origin: true });
-fastify.register(fastifySwagger, swaggerSchema);
+  app.register(fastifyCors, { origin: true });
+  app.register(fastifySwagger, swaggerSchema);
+  app.register(fastifyPg, {
+    connectionString: isTestEnv ? TEST_DB_URL : DB_URL,
+  });
 
-fastify.register(AutoLoad, { dir: path.join(__dirname, 'src', 'plugins') });
-fastify.register(AutoLoad, { dir: path.join(__dirname, 'src', 'services') });
+  app.register(AutoLoad, { dir: path.join(__dirname, 'src', 'plugins') });
+  app.register(AutoLoad, { dir: path.join(__dirname, 'src', 'services') });
 
-const port = process.env.PORT || 3001;
+  return app;
+};
 
-fastify.listen(port, '0.0.0.0').then(() => fastify.swagger());
+module.exports = run;

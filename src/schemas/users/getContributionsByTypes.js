@@ -6,7 +6,7 @@ const getContributionsByTypesSchema = {
   params: {
     type: 'object',
     required: ['id'],
-    properties: { id: { type: 'string' } },
+    properties: { id: { type: 'number' } },
   },
   response: {
     200: {
