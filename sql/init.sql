@@ -1,6 +1,6 @@
 CREATE EXTENSION IF NOT EXISTS timescaledb;
 
-CREATE TYPE CONTRIBUTION_TYPE AS ENUM('typo_editting', 'content_addition');
+CREATE TYPE CONTRIBUTION_TYPE AS ENUM('typo_editting', 'content_addition', 'other');
 
 CREATE TABLE users (
   user_id SERIAL PRIMARY KEY,
