@@ -76,7 +76,7 @@ describe(`Users GET - API - Get user's contributions`, () => {
     test('404 Not found - user not found', async () => {
       const { statusCode } = await app.inject({
         method: 'GET',
-        url: '/users/4/contributions',
+        url: '/users/4/contributions?timescale=year',
       });
       expect(statusCode).toEqual(404);
     });
