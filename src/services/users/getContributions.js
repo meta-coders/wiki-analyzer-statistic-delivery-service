@@ -10,12 +10,11 @@ const getContributions = (fastify) => async (request, reply) => {
   );
 
   if (userExistsResult.rowCount === 0) {
-    reply.code(404);
-    reply.send({
+    pgClient.release();
+    return reply.code(404).send({
       code: 404,
       message: fastify.errorMessages.userNotExists,
     });
-    return;
   }
 
   const contributionsResult = await pgClient.query(

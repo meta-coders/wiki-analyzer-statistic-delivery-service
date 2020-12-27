@@ -4,6 +4,8 @@ const app = require('../../app')();
 
 describe(`Users GET - API - Get user's contributions grouped by topics`, () => {
   describe('GET /users/:id/contributions/topics', () => {
+    afterAll(() => app.pg.pool.end());
+
     test('200 OK - get contributions sorted in descending order', async () => {
       const { body, statusCode } = await app.inject({
         method: 'GET',

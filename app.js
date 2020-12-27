@@ -15,7 +15,7 @@ const run = () => {
   dotenv.config();
   const { NODE_ENV, DB_URL, TEST_DB_URL } = process.env;
   const isTestEnv = NODE_ENV === 'test';
-  const app = fastify({ logger: !(isTestEnv) });
+  const app = fastify({ logger: !isTestEnv });
 
   app.register(fastifyCors, { origin: true });
   app.register(fastifySwagger, swaggerSchema);
