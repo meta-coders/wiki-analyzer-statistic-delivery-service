@@ -9,6 +9,7 @@ CREATE TABLE users (
 
 CREATE TABLE contributions (
   timestamp         TIMESTAMPTZ NOT NULL,
+  event_id          TEXT NOT NULL UNIQUE,
   topic             TEXT NOT NULL,
   user_id           INTEGER REFERENCES users NOT NULL,
   contribution_type CONTRIBUTION_TYPE NOT NULL

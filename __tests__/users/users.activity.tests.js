@@ -109,14 +109,14 @@ describe(`Users GET - API - Get users by contributions activity`, () => {
     test('200 OK - get users with activity scaled in months', async () => {
       const expectedUsers = [
         {
-          user_id: 2,
-          username: 'user 2',
+          user_id: 1,
+          username: 'user 1',
           contributions: 1,
           period: '2019-06-01',
         },
         {
-          user_id: 1,
-          username: 'user 1',
+          user_id: 2,
+          username: 'user 2',
           contributions: 1,
           period: '2019-06-01',
         },

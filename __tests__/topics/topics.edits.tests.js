@@ -19,7 +19,6 @@ describe(`Topics GET - API - Get topics by edits`, () => {
       const { topics } = JSON.parse(body);
       expect(topics).toBeDefined();
       expect(topics).toEqual(expectedTopics);
-      console.log(topics);
     });
 
     test('200 OK - get topics sorted in ascending order', async () => {
