@@ -3,7 +3,7 @@
 const getUsersByActivity = (fastify) => async (request, reply) => {
   const { sort, timescale } = request.query;
   const pgClient = await fastify.pg.connect();
-  const contributionsResult = await pgClient.query(
+  const usersResult = await pgClient.query(
     `WITH contributions_count AS (
       SELECT date_trunc('${timescale}', timestamp) period,
              user_id,
@@ -27,7 +27,7 @@ const getUsersByActivity = (fastify) => async (request, reply) => {
   );
 
   pgClient.release();
-  reply.send({ contributions: contributionsResult.rows });
+  reply.send({ users: usersResult.rows });
 };
 
 module.exports = getUsersByActivity;
