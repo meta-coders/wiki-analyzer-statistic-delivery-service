@@ -14,5 +14,3 @@ CREATE TABLE contributions (
   user_id           INTEGER REFERENCES users NOT NULL,
   contribution_type CONTRIBUTION_TYPE NOT NULL
 );
-
-SELECT create_hypertable('contributions', 'timestamp');
